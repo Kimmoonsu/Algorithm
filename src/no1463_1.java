@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 
-public class no1463_1로만들기 {
+public class no1463_1 {
 	private int num;
 	private int d[] = new int[10000001];
 	public void init()
@@ -30,7 +30,7 @@ public class no1463_1로만들기 {
 	}
 	
 	public static void main(String[] args) {
-		new no1463_1로만들기().init();
+		new no1463_1().init();
 	}
 	
 	class FastScanner {
