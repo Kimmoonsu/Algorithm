@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class no2863 {
 	private int arr[][] = new int[3][3];
 	private double max[] = new double[5];
