@@ -24,9 +24,6 @@ public class factorial {
 		if (num == 0) return 1;
 		return num * func(num-1);
 	}
-	void test() {
-	System.out.println("hello World");
-	}
 	public static void main(String[] args) {
 		new factorial().init();
 	}
