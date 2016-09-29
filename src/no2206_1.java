@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
 public class no2206_1 {
 	int X, Y;
 	boolean map[][] = new boolean[1001][1001];
