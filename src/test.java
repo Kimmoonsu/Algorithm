@@ -3,12 +3,9 @@ import java.util.Set;
 
 public class test {
 	public static void main(String[] args) {
-		Set<Integer> s = new HashSet<Integer>();
-		s.add(1);
-		s.add(2);
-		s.add(2);
-		s.add(3);
-		System.out.println(s);
-		
+		int x[] = {1,2,3,4,5};
+		for (int i : x) {
+			System.out.println(i);
+		}
 	}
 }
