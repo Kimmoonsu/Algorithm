@@ -1,43 +1,33 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 
 public class no2605_2 {
-	private int arr[];
-	private int data[];
-	private int size;
-	public no2605_2()
-	{
-		
-	}
-	void init()
-	{
-		Scanner sc = new Scanner(System.in);
-		size = sc.nextInt();
-		arr = new int[size];
-		data = new int[size];
-		for (int i = 0; i< size; i ++)
-			arr[i] = sc.nextInt();
-	}
-	void add(int index, int data)
-	{
-		for (int i = size-1; i > index; i--)
-		{
-			this.data[i] = this.data[i-1];
+	void init() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		String input[] = br.readLine().split(" ");
+		int num[] = new int[N+1];
+		for (int i = 1 ; i <= N; i++) {
+			num[i] = Integer.parseInt(input[i-1]); 
 		}
-		this.data[index] = data;
+		System.out.println(func(arr, num));
+	
 	}
-	void func()
-	{
-		for (int i = 0 ; i < size; i ++)
-		{
-			add(i-arr[i], i+1);	
+	StringBuilder func(ArrayList<Integer> arr, int[] num) {
+		StringBuilder sb = new StringBuilder();
+		arr.add(0);
+		for (int i = 1; i <= num.length-1; i++) {
+			arr.add(i-num[i], i);
 		}
-		for (int j = 0 ; j < size; j ++)
-			System.out.print(data[j] + " ");
-		System.out.println();
+		for (int i = 1; i <= num.length-1; i++) sb.append(arr.get(i) + " ");
+		sb.append("\n");
+		return sb;
 	}
-	public static void main(String[] args) {
-		no2605_2 m = new no2605_2();
-		m.init();
-		m.func();
+	public static void main(String[] args) throws IOException {
+		new no2605_2().init();
 	}
 }
