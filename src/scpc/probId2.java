@@ -3,8 +3,7 @@ package scpc;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 public class probId2 {
 	void init() throws IOException {
@@ -14,43 +13,28 @@ public class probId2 {
 		for (int t = 1; t <= testcase; t++) {
 			sb.append("Case #"+t +"\n");
 			int N = Integer.parseInt(br.readLine());
-			int count_arr[] = new int[2000001];
-			ArrayList<Integer> arr = new ArrayList<Integer>();
+			int[] arr = new int[N+1];
 			for (int i = 1; i <= N; i++) {
-				int num = Integer.parseInt(br.readLine());
-				arr.add(num);
-				count_arr[num] += 1;
+				arr[i] = Integer.parseInt(br.readLine());
 			}
-			Collections.sort(arr);
-			sb.append(func(N, arr, count_arr)+"\n");
+			Arrays.sort(arr);
+			sb.append(func(arr,N) + "\n");
 		}
-		System.out.println(sb);
+		System.out.println(sb.toString());
 	}
-	int func(int N, ArrayList<Integer> arr, int[] count_arr) {
-		int index = 0;
-		while (index < N) {
-			int max = arr.get(index) + N;
-			int n = 1;
-			boolean state = true; // 성공 
-			int i = N-1;
-			while(i > index) {
-				int num = arr.get(i);
-				int minus = count_arr[num] - 1;
-				n += minus;
-				num += n;
-				i = i - minus -1;
-				n++;
-				if (max < num) {
-					state = false; // 실패  
-					break;
-				}
-			}
-			
-			if (state) return N-index;
-			index++;
-		}
-		return N-index;
+	int func(int[] arr, int N) {
 		
+		int n = N;
+		int max = 0;
+		for (int i = 1; i <= N; i++) {
+			int num = arr[i]+n--;
+			max = max < num ? num : max;
+		}
+		int count = 0;
+		for (int i = 1; i <= N; i++) {
+			count = arr[i] + N >= max ? count + 1 : count;
+		}
+		return count;
 	}
 	
 	public static void main(String[] args) throws IOException {
