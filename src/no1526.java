@@ -1,50 +1,29 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class no1526 {
-	String result="";
-	void init() {
-		Scanner sc = new Scanner(System.in);
-		String N = sc.nextLine();
-		func(N);
+	static int N;
+	static int result;
+	void init() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(br.readLine());
+		dfs(4);
+		dfs(7);
+		System.out.println(result);
 	}
-	void func(String N) {
-		if (((int)N.charAt(0)-48) < 4) {
-			for (int i = 0; i < N.length()-1; i++) 
-				System.out.print(7);
-		}
-		else {
-			boolean state = false;
-			for (int i = 0; i < N.length(); i++) {
-				if (state) result += "7";
-				else {
-					int num = N.charAt(i)-48;
-					if (num < 4) {
-						int n = (int)result.charAt(result.length()-1)-48;
-						System.out.println("num : " + n);
-						result = result.substring(0, result.length()-1);
-						result += n == 4 ? "7" : "4";
-						result += "7";
-					}
-					else if (num > 7) {
-						result += "7";
-						state = true;
-					} else if (num == 4 || num == 7) result += String.valueOf(num);
-					else if (num < 7) {
-						result += "4";
-						state = true;
-					}
-				}
-				
-			}
-			
-			System.out.println(result);
-		}
-		
+	void dfs(int number) {
+		if (number > N) return;
+		result = Math.max(result, number);
+		dfs(number*10 + 4);
+		dfs(number*10 + 7);
 	}
-	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		new no1526().init();
 		
 	}
+	// 147 -> 77
+	//460-> 447
+	// 700 -> 477
 }
