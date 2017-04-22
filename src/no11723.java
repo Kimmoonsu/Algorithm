@@ -9,6 +9,7 @@ public class no11723 {
 		int M = Integer.parseInt(br.readLine());
 		int bit = 0;
 		final int MAX = (int)Math.pow(2, 21) -1;
+		
 		for (int i = 1; i <= M; i++) {
 			String str[] = br.readLine().split(" ");
 			int num = 0;
